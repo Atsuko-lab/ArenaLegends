@@ -8,3 +8,6 @@ Lorsqu'on copie "int[] b = a;" l'objet a devient b et inversement. C'est-à-dire
 int[] a = {1,2,3,4}
 int[] b = a
 b[1] = 5 //a[1] devient également 5
+
+Partie 3 : 
+le seter permet de passer au dessus des règles, ça protéège certe des bornes définit mais pas des règles style un combattant KO ne peut pas etre soigné.
