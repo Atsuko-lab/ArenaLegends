@@ -1,6 +1,6 @@
 package StatsArene;
 
-public class Combattant {
+public abstract class Combattant {
 
 	private String nom;
 	private int pvMax;
@@ -9,6 +9,8 @@ public class Combattant {
 	private int defense;
 	private static int nbCombattants;
 
+    public abstract int attaquer(Combattant cible);
+	
 	public Combattant(String nom, int attaque, int defense, int pvMax) {
 		if (nom == null || nom.isBlank()) {
 			throw new IllegalArgumentException("nom ne doit pas être vide");
@@ -91,37 +93,49 @@ public class Combattant {
 	public boolean estKO() {
 		return pv == 0;
 	}
+	
+	protected void subirDegatsBruts(int d) {
+	    if (d < 0) {
+	        System.out.println("les dégâts doivent être positifs, reçu : " + d);
+	    }
+	    pv -= d;
+	    if (pv < 0) {
+	        pv = 0;
+	    }
+	}
+
+	public abstract String getClasse();
 
 	@Override
 	public String toString() {
-		return nom + " [" + pv + "/" + pvMax + " PV] ATK " + attaque + " DEF " + defense;
+	    return getClasse() + " " + nom + " [" + pv + "/" + pvMax + " PV] ATK " + attaque + " DEF " + defense;
 	}
 
 
-	public static void main(String[] args) {
-		Combattant k = new Combattant("Kaelen", 18, 6, 120);
-		System.out.println(k);
+	//public static void main(String[] args) {
+		//Combattant k = new Combattant("Kaelen", 18, 6, 120);
+		//System.out.println(k);
 
-		System.out.println("\n--- Dégâts ---");
-		System.out.println("Subit 54 -> " + k.subirDegats(54) + " dégâts réels : " + k);
-		System.out.println("Subit 3 (< défense) -> " + k.subirDegats(3) + " dégât réel : " + k);
+		//System.out.println("\n--- Dégâts ---");
+		//System.out.println("Subit 54 -> " + k.subirDegats(54) + " dégâts réels : " + k);
+		//System.out.println("Subit 3 (< défense) -> " + k.subirDegats(3) + " dégât réel : " + k);
 
-		System.out.println("\n--- Soin ---");
-		System.out.println("Soigne 10 -> +" + k.soigner(10) + " : " + k);
-		System.out.println("Soigne 500 -> +" + k.soigner(500) + " (plafonné) : " + k);
+		//System.out.println("\n--- Soin ---");
+		//System.out.println("Soigne 10 -> +" + k.soigner(10) + " : " + k);
+		//System.out.println("Soigne 500 -> +" + k.soigner(500) + " (plafonné) : " + k);
 
-		System.out.println("\n--- K.O. ---");
-		k.subirDegats(999);
-		System.out.println("Après 999 dégâts : " + k + ", KO = " + k.estKO());
-		System.out.println("Soigne 50 -> +" + k.soigner(50) + " : " + k);
+		//System.out.println("\n--- K.O. ---");
+		//k.subirDegats(999);
+		//System.out.println("Après 999 dégâts : " + k + ", KO = " + k.estKO());
+		//System.out.println("Soigne 50 -> +" + k.soigner(50) + " : " + k);
 
-		System.out.println("\nNombre de combattants : " + getNbCombattants());
+		//System.out.println("\nNombre de combattants : " + getNbCombattants());
 
-		System.out.println("\n--- Valeur invalide ---");
-		try {
-			new Combattant("Rex", 70, 10, 100);
-		} catch (IllegalArgumentException e) {
-			System.out.println("Erreur : " + e.getMessage());
-		}
-	}
+		//System.out.println("\n--- Valeur invalide ---");
+		//try {
+			//new Combattant("Rex", 70, 10, 100);
+		//} catch (IllegalArgumentException e) {
+			//System.out.println("Erreur : " + e.getMessage());
+		//}
+	//}
 }
