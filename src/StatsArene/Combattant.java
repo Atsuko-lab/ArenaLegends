@@ -7,6 +7,7 @@ public abstract class Combattant {
 	private int pv;
 	private int attaque;
 	private int defense;
+	private int victoires;
 	private static int nbCombattants;
 
     public abstract int attaquer(Combattant cible);
@@ -102,6 +103,14 @@ public abstract class Combattant {
 	    if (pv < 0) {
 	        pv = 0;
 	    }
+	}
+	
+	public int getVictoires() {
+		return victoires;
+	}
+
+	public void ajouterVictoire() {
+		victoires++;
 	}
 
 	public abstract String getClasse();
