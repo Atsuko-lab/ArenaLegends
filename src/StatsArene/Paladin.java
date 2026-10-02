@@ -15,7 +15,7 @@ public class Paladin extends Combattant {
         int degats = getAttaque();
         foi++;
         if (foi >= 3) {
-            soigner(getPvMax() * 15 / 100);
+            soigner(getPvMax() * 10 / 100);
             foi = 0;
         }
         cible.subirDegats(degats);
