@@ -14,3 +14,7 @@ le seter permet de passer au dessus des règles, ça protéège certe des bornes
 
 Partie 4:
 On met le proctected afin que les class filles (ici Mage) puisse avoir accès a la méthode. Si on avait public n'importe qui aurait eu accès et private seulement Combattant.
+
+Question finale : 
+
+Sur 100 tournoi, la classe qui gagne le plus est le paladin et le voleur. Ce n'est pas équilibré, car même quand on relance, ce sont les deux qui ont le plus de chance de gagner.
